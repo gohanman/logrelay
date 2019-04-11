@@ -74,7 +74,7 @@ let setConf (name, param) =
     | "relay_port" -> LOCALPORT <- Int32.Parse(param)
     | "destination_host" -> RELAYSERVER <- (param, snd RELAYSERVER)
     | "destination_port" -> RELAYSERVER <- (fst RELAYSERVER, Int32.Parse(param))
-    | _ -> printfn "%s" ("Warning: unknown config option " + name)
+    | _ -> printfn "Warning: unknown config option %s" name
     ()
 
 // convert config file to (name, value) tuples
@@ -97,7 +97,7 @@ let main argv =
         with
         | _ -> (
                 printfn "Error: no config file logrelay.conf found"
-                printfn "%s" ("Paths checked: /etc, " + AppDomain.CurrentDomain.BaseDirectory)
+                printfn "Paths checked: /etc, %s" AppDomain.CurrentDomain.BaseDirectory
                 Environment.Exit(1)
                 ""
             )
